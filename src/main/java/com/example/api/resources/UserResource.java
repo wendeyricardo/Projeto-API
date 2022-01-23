@@ -25,10 +25,10 @@ public class UserResource {
     @Autowired
     private UserService service;
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = ID)
     public ResponseEntity<UserDTO> findById(@PathVariable Integer id){
 
-        return ResponseEntity.ok().body(mapper.map(service.findById(id),UserDTO.class));
+        return ResponseEntity.ok().body(mapper.map(service.findById(id), UserDTO.class));
 
     }
 
@@ -48,7 +48,7 @@ public class UserResource {
         return  ResponseEntity.created(uri).build();
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = ID)
     public ResponseEntity<UserDTO> update(@PathVariable Integer id, @RequestBody UserDTO obj){
         obj.setId(id);
         return  ResponseEntity.ok().body((mapper.map(service.update(obj), UserDTO.class)));
